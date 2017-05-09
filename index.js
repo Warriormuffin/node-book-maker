@@ -36,52 +36,26 @@ server.get('/', function(req, res, next){
 })
 
 server.get('/books', function(req, res, next){
-  res.send(books)
+  Book.find({}).then(function(books){
+    res.send(books)
+  })
 })
-
-var books = [{
-  title: "Harry Potter",
-  published: "2003",
-  rating: "5 Bubbles",
-  Author: "JK Rowling"
-}, {
-  title: "Harry Potter 2",
-  published: "2004",
-  rating: "5 Bubbles",
-  Author: "JK Rowling"
-}, {
-  title: "Harry Potter 3",
-  published: "2005",
-  rating: "5 Bubbles",
-  Author: "JK Rowling"
-}, {
-  title: "Harry Potter 4",
-  published: "2006",
-  rating: "5 Bubbles",
-  Author: "JK Rowling"
-}
-]
 
 server.get('/books/:id', function(req, res, next){
   var id = req.params.id
-  if(books[id]){
-    res.send(books[id])
-  }else res.send(404, {
-    error: {
-      message: "Sorry no books located at" + id
-    }
+  Book.findById(id).then(function(book){
+    res.send(book)
+  }).catch(function(err){
+    res.send(err)
   })
 })
 
 server.post('/books', function(req, res, next){
-    var newBook = req.body
-    if(newBook.title && newBook.author && newBook.published && newBook.rating){
-      books.push(newBook)
-      res.send('New Book was added')
-    }else{
-      res.send('You must provide an Author, Published Date, Rating, and Author')
-    }
-
+    var newBook = req.body.book
+    Book.create(newBook)
+      .then(function(newlyCreatedBook){
+        res.send(newlyCreatedBook)
+      })
 })
 
 server.put('/books/:id', function(req, res, next){
@@ -106,12 +80,13 @@ server.delete('/books/:id', function (req, res, next) {
 
 // Book IN THE DATABASE
 var Schema = mongoose.Schema
-var Book = new Schema({
+var BookSchema = new Schema({
   title: {type: String, required: true},
   published: {type: Number, required: true},
   rating: {type: String, required: true, default: '3 bubbles'},
   author: {type: String, required: true}
 })
 
-mongoose.model('Book', Book)
+var Book = mongoose.model('Book', BookSchema)
+
 
