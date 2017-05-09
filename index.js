@@ -103,8 +103,15 @@ server.delete('/books/:id', function (req, res, next) {
 })
 
 
-// server.listen(port, function(){
-//   console.log("We are listening on port: ", port)
-// })
 
+// Book IN THE DATABASE
+var Schema = mongoose.Schema
+var Book = new Schema({
+  title: {type: String, required: true},
+  published: {type: Number, required: true},
+  rating: {type: String, required: true, default: '3 bubbles'},
+  author: {type: String, required: true}
+})
+
+mongoose.model('Book', Book)
 
