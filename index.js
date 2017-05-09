@@ -9,6 +9,8 @@ var mongoose = require('mongoose')
 var connectionString = 'mongodb://nathan:nathan@ds131099.mlab.com:31099/nathans-books'
 var connection = mongoose.connection;
 
+server.use(bodyParser.json())
+server.use(bodyParser.urlencoded({ extended: true}))
 
 //DOES NOT CHANGE
 mongoose.connect(connectionString, {
@@ -29,7 +31,6 @@ connection.once('open', () => {
 })
 
 
-server.use(bodyParser.json())
 
 server.get('/', function(req, res, next){
   res.send(200, 'I can hear you......')
@@ -38,6 +39,13 @@ server.get('/', function(req, res, next){
 server.get('/books', function(req, res, next){
   Book.find({}).then(function(books){
     res.send(books)
+  })
+})
+
+server.get('/books/search', function(req, res, next){
+  var query = req.query
+  Book.find({query}).then(function(book){
+    res.send(book)
   })
 })
 
@@ -60,15 +68,11 @@ server.post('/books', function(req, res, next){
 
 server.put('/books/:id', function(req, res, next){
   var id = req.params.id
-  var editBook = req.body
-  debugger
-  if(editBook.rating !== books[id].rating){
-    books[id].rating = editBook.rating
-    res.send("Book rating has been updated")
-  }else{
-    res.send("You must provide a different rating")
-
-  }
+  var editedBook = req.body.book
+  Book.findByIdAndUpdate(id, editedBook)
+    .then(function(book){
+      res.send(book)
+    })
 })
 
 server.delete('/books/:id', function (req, res, next) {
