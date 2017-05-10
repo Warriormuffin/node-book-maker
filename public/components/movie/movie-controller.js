@@ -10,7 +10,7 @@ function MovieController(){
       studio: e.target.studio.value,
       release: e.target.release.value
     }
-    movieService.saveMovie(movie)
+    movieService.saveMovies(movie)
   }
 
 

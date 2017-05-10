@@ -6,14 +6,15 @@ exports.mountPath = '/movies'
 exports.router = router
 
 
-router.route('/movies')
+router.route('/')
   .get(getMovies)
 
-router.route('/movies')
+router.route('/')
   .post(createMovies)
 
 
   function getMovies(req, res, next){
+    debugger
     Movie.find({}).then(function(movie){
       res.send(movies)
     })

@@ -8,7 +8,7 @@
 </head>
 <body>
   <div class="book-form">
-    <form onsubmit="app.controllers.formController.getBook(event)">
+    <form onsubmit="app.controllers.formController.saveBook(event)">
       <input type="text" name="title" placeholder="Title">
       <input type="number" name="published" placeholder="Published Year">
       <input type="text" name="rating" placeholder="Rating">
@@ -27,6 +27,11 @@
     </form>
   </div>
 
+
+  <div id="books-list">
+
+  </div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
     crossorigin="anonymous"></script>
@@ -34,10 +39,10 @@
     crossorigin="anonymous"></script>
 
 
-    <script src="app/components/form/form-service.js"></script>
-    <script src="app/components/movie/movie-service.js"></script>
-    <script src="app/components/form/form-controller.js"></script>
-    <script src="app/components/movie/movie-controller.js"></script>
-    <script src="app/init.js"></script>
+    <script src="public/components/form/form-service.js"></script>
+    <script src="public/components/movie/movie-service.js"></script>
+    <script src="public/components/form/form-controller.js"></script>
+    <script src="public/components/movie/movie-controller.js"></script>
+    <script src="public/init.js"></script>
 </body>
 </html>

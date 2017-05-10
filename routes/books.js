@@ -4,7 +4,7 @@ var Book = require('./../models/book')
 exports.mountPath = '/books'
 exports.router = router
 
-router.route('/books')
+router.route('/')
   .get(getBooks);
 
 router.route('/')
