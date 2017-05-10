@@ -5,7 +5,6 @@ var server = express()
 var port = 3000
 var Book = require('./models/book')
 var Movie = require('./models/movie')
-debugger
 var routes = require('./routes')
 
 

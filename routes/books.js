@@ -7,7 +7,7 @@ exports.router = router
 router.route('/books')
   .get(getBooks);
 
-router.route('/books')
+router.route('/')
 .post(createBooks)
 
 
