@@ -7,15 +7,24 @@
   <title>Form</title>
 </head>
 <body>
-  <div class="form">
+  <div class="book-form">
     <form onsubmit="app.controllers.formController.getBook(event)">
-      <input type="text" id="title" placeholder="Title">
-      <input type="number" id="published" placeholder="Published Year">
-      <input type="text" id="rating" placeholder="Rating">
-      <input type="text" id="author" placeholder="Author">
+      <input type="text" name="title" placeholder="Title">
+      <input type="number" name="published" placeholder="Published Year">
+      <input type="text" name="rating" placeholder="Rating">
+      <input type="text" name="author" placeholder="Author">
       <button type="submit">Create a new Book</button>
     </form>
+  </div>
 
+   <div class="movie-form">
+    <form onsubmit="app.controllers.movieController.saveMovies(event)">
+      <input type="text" name="title" placeholder="Title">
+      <input type="text" name="director" placeholder="Director">
+      <input type="text" name="studio" placeholder="Studio">
+      <input type="number" name="release" placeholder="Release Year">
+      <button type="submit">Create a new Movie</button>
+    </form>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -26,7 +35,9 @@
 
 
     <script src="app/components/form/form-service.js"></script>
+    <script src="app/components/movie/movie-service.js"></script>
     <script src="app/components/form/form-controller.js"></script>
+    <script src="app/components/movie/movie-controller.js"></script>
     <script src="app/init.js"></script>
 </body>
 </html>

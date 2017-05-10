@@ -1,5 +1,6 @@
 var app = {
   controllers: {
-    formController: new FormController()
+    formController: new FormController(),
+    movieController: new MovieController()
   }
 }
