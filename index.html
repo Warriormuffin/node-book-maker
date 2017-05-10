@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Form</title>
+</head>
+<body>
+  <div class="form">
+    <form onsubmit="app.controllers.formController.getBook(event)">
+      <input type="text" id="title" placeholder="Title">
+      <input type="number" id="published" placeholder="Published Year">
+      <input type="text" id="rating" placeholder="Rating">
+      <input type="text" id="author" placeholder="Author">
+      <button type="submit">Create a new Book</button>
+    </form>
+
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+    crossorigin="anonymous"></script>
+
+
+    <script src="app/components/form/form-service.js"></script>
+    <script src="app/components/form/form-controller.js"></script>
+    <script src="app/init.js"></script>
+</body>
+</html>

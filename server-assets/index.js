@@ -1,7 +1,10 @@
 var express = require('express')
 var bodyParser = require('body-parser')
+var cors = require('cors')
 var server = express()
 var port = 3000
+
+
 
 
 // Database logic
@@ -11,6 +14,8 @@ var connection = mongoose.connection;
 
 server.use(bodyParser.json())
 server.use(bodyParser.urlencoded({ extended: true}))
+server.use(cors())
+server.use('/', express.static(`${__dirname}/app/`))
 
 //DOES NOT CHANGE
 mongoose.connect(connectionString, {
@@ -59,7 +64,8 @@ server.get('/books/:id', function(req, res, next){
 })
 
 server.post('/books', function(req, res, next){
-    var newBook = req.body.book
+  debugger
+    var newBook = req.body
     Book.create(newBook)
       .then(function(newlyCreatedBook){
         res.send(newlyCreatedBook)
